@@ -21,7 +21,7 @@ xlabel('\mu_1')
 ylabel('Dev(\mu_1)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
-set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
 print(h,'profile_dev_mu_1','-dpdf','-r0')
 
 %% Plot partial Dev(mu_2)
@@ -38,7 +38,7 @@ xlabel('\mu_2')
 ylabel('Dev(\mu_2)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
-set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
 print(h,'profile_dev_mu_2','-dpdf','-r0')
 
 
@@ -57,7 +57,7 @@ ylabel('\mu_2')
 zlabel('Dev(\theta)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
-set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
 print(h,'dev_param_mu_1_mu_2','-dpdf','-r0')
 
 %% Plot Dev(theta) = Dev(mu_1+mu_2, mu_1 - mu_2)
@@ -79,6 +79,6 @@ ylabel('\theta_2 = \mu_1 - \mu_2')
 zlabel('Dev(\theta)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
-set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
 print(h,'dev_param_theta_1_theta_2','-dpdf','-r0')
 
