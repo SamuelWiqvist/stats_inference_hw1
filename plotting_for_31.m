@@ -6,28 +6,17 @@ x3 = 45.8;
 mu_1_mle = 15.9; % mle 
 mu_2_mle = 29.6;
 
-%% Plot partial Dev(mu_1)
+%% Functions to compute partial Dev(mu_1)
 
 % partial dev function for mu_1
 mu_2_given_mu_1 = @(mu_1) -1/2*(x2 -  mu_1 + x3)
 l_profile_m_1 = @(mu_1) -(x1 - mu_1).^2 - (x2 - mu_2_given_mu_1(mu_1)).^2 ...
-                        - (x3 - (mu_1 - mu_2_given_mu_1(mu_1))).^2
-                    
+                        - (x3 - (mu_1 - mu_2_given_mu_1(mu_1))).^2          
 profile_dev_mu_1 = @(mu_1) -1*(l_profile_m_1(mu_1) - l_profile_m_1(mu_1_mle) ); 
 
 
-mu_1 =  linspace(0,100,100);
 
-h = figure;
-plot(mu_1, profile_dev_mu_1(mu_1))
-xlabel('\mu_1')
-ylabel('Dev(\mu_1)')
-set(h,'Units','Inches');
-pos = get(h,'Position');
-set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
-print(h,'profile_dev_mu_1','-dpdf','-r0')
-
-%% Plot partial Dev(mu_2)
+%% Functions to partial Dev(mu_2)
 
 % partial dev function for mu_1
 mu_1_given_mu_2 = @(mu_2) -1/2*(x2 -  mu_2 + x3)
@@ -35,16 +24,25 @@ l_profile_m_2 = @(mu_2) -(x1 - mu_1_given_mu_2(mu_2)).^2 - (x2 - mu_2).^2 ...
                         - (x3 - (mu_1_given_mu_2(mu_2) - mu_2)).^2
 profile_dev_mu_2 = @(mu_2) -1*(l_profile_m_2(mu_2) - l_profile_m_2(mu_2_mle) ); 
 
+
+%% Plot   Dev(mu_1)  and Dev(mu_2)
+
+mu_1 =  linspace(0,100,100);
 mu_2 =  linspace(-20,100,100);
 
 h = figure;
+subplot(121)
+plot(mu_1, profile_dev_mu_1(mu_1))
+xlabel('\mu_1')
+ylabel('Dev(\mu_1)')
+subplot(122)
 plot(mu_2, profile_dev_mu_2(mu_2))
 xlabel('\mu_2')
 ylabel('Dev(\mu_2)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
-print(h,'profile_dev_mu_2','-dpdf','-r0')
+print(h,'profile_dev_mu_1_dev_mu_2','-dpdf','-r0')
 
 
 %% Plot Dev(theta) = Dev(mu_1, mu_2)
