@@ -39,6 +39,7 @@ subplot(122)
 plot(mu_2, profile_dev_mu_2(mu_2))
 xlabel('\mu_2')
 ylabel('Dev(\mu_2)')
+set(gcf, 'Position',  [100, 100, 1000, 400])
 set(h,'Units','Inches');
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3)+0.2, pos(4)+0.3])
