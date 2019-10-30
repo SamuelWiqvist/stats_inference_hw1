@@ -31,9 +31,10 @@ print(h,'profile_dev_mu_1','-dpdf','-r0')
 
 % partial dev function for mu_1
 mu_1_given_mu_2 = @(mu_2) -1/2*(x2 -  mu_2 + x3)
+
 l_profile_m_2 = @(mu_2) -(x1 - mu_1_given_mu_2(mu_2)).^2 - (x2 - mu_2).^2 ...
-                        - (x3 - (mu_1_given_mu_2(mu_2) - mu_2)).^2
-profile_dev_mu_2 = @(mu_2) -1*(l_profile_m_2(mu_2) - l_profile_m_2(mu_2_mle) ); 
+                        - (x3 - (mu_1_mle - mu_2)).^2
+profile_dev_mu_2 = @(mu_2) -1*(l_m_2(mu_2) - l_m_2(mu_2_mle) ); 
 
 mu_2 =  linspace(-20,100,100);
 
